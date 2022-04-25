@@ -4,7 +4,7 @@ const cors = require('cors');
 const app = express();
 
 app.use(cors({
-    origin: 'https://mmgps.netlify.app/',
+    origin: 'https://mmgps.herokuapp.com/users/login/',
     methods: ['GET', 'POST'],
 }));
 app.use(express.json());
