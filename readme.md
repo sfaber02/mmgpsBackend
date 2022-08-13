@@ -15,7 +15,7 @@
 - /user/register - registers a new user
     - takes a json body in the format
         {
-            "name": "John,
+            "name": "John",
             "email": "email@email.com",
             "password": "password123"
         }

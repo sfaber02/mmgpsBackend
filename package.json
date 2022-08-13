@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dbinit": "psql -U postgres -f db/schema.sql"
+    "dbinit": "psql -U postgres -f db/schema.sql",
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
