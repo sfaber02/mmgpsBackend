@@ -33,13 +33,14 @@ const register = async (req, res) => {
         // hash password / post user to DB / generate JWT tokens / send response
         bcrypt.hash(password, 10, async (err, hash) => {
             if (err) {
-                res.status(err).json({ error: "Server Error" });
+                res.status(err).json({ error: "Bcrypt Error" });
                 return;
             } else {
                 try {
                     const newUser = await addUser(name, email, hash);
 
                     if (newUser) {
+                      //if DB post successful generate JWTs
                         const tokens = generateTokens(newUser);
 
                         res.cookie("refresh_token", tokens.refreshToken, {
@@ -49,7 +50,7 @@ const register = async (req, res) => {
                         });
 
                         res.status(200).json(tokens);
-                        
+
                     } else {
                         res.status(500).json({
                             error: "Failed to Post User to DB",
@@ -63,7 +64,7 @@ const register = async (req, res) => {
             }
         });
     } catch (error) {
-        res.status(500).send(error);
+        res.status(500).json({error: error});
     }
 };
 
