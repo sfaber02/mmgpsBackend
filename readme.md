@@ -1,7 +1,4 @@
-# user authorization backend
-
-This backend will create new users and store them in a PSQL db 
-and also handle authorize login requests from a frontend, returning a signed JWT.
+# backend for mmgps
 
 
 ## Dependencies
@@ -32,6 +29,8 @@ and also handle authorize login requests from a frontend, returning a signed JWT
     - returns a signed jwt
 
 ## SQL Table Structure
+
+### Users 
 
 Columns - 
     - id SERIAL PRIMARY KEY
