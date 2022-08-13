@@ -4,7 +4,8 @@ const jwt = require("jsonwebtoken");
 const { getUser } = require("../queries/userQueries.js");
 
 
-exports.login = async (req, res) => {
+const login = async (req, res) => {
+    console.log("LOGIN");
     const { email, password} = req.body;
     try {
         const user = await getUser(email);
@@ -34,3 +35,6 @@ exports.login = async (req, res) => {
         res.status(500).json({ error });
     }
 }
+
+
+module.exports = {login};
