@@ -1,21 +1,24 @@
 const pgp = require("pg-promise")();
 require('dotenv').config();
 
+
+const {DATABASE_URL, PG_HOST, PG_PORT, PG_DATABASE, PG_USER} = process.env;
+
 let cn = {};
 //FOR PRODUCTION
 if (process.env.DATABASE_URL) {
     //production mode - links to heroku psql
     cn = {
-        connectionString: process.env.DATABASE_URL,
+        connectionString: DATABASE_URL,
         ssl: { rejectUnauthorized: false }
     }
 } else {
     //DEVELOPMENT mode links to local psql
     cn = {
-        host: process.env.PG_HOST,
-        port: process.env.PG_PORT,
-        database: process.env.PG_DATABASE,
-        user: process.env.PG_USER,
+        host: PG_HOST,
+        port: PG_PORT,
+        database: PG_DATABASE,
+        user: PG_USER,
         // password: process.env.PG_PASSWORD,
     }
 }

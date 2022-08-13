@@ -1,0 +1,12 @@
+DROP DATABASE IF EXISTS mmgps;
+CREATE DATABASE mmgps;
+
+\c mmgps
+
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    username VARCHAR UNIQUE NOT NULL,
+    email VARCHAR UNIQUE NOT NULL,
+    password VARCHAR UNIQUE NOT NULL
+);
+
