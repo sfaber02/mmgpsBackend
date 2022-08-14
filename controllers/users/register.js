@@ -4,9 +4,9 @@ const {
     doesEmailExist,
     doesUsernameExist,
     addUser,
-} = require("../queries/userQueries.js");
+} = require("../../queries/userQueries.js");
 
-const { generateTokens } = require("../helpers/generateTokens.js");
+const { generateTokens } = require("../../helpers/generateTokens.js");
 
 const register = async (req, res) => {
     const { name, email, password } = req.body;
@@ -36,7 +36,7 @@ const register = async (req, res) => {
             } else {
                 try {
                     const newUser = await addUser(name, email, hash);
-
+                    console.log(newUser);
                     if (newUser) {
                         //if DB post successful generate JWTs
                         const tokens = generateTokens(newUser);

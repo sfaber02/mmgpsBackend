@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
-const { getUser } = require("../queries/userQueries.js");
-const { generateTokens } = require("../helpers/generateTokens.js");
+const { getUser } = require("../../queries/userQueries.js");
+const { generateTokens } = require("../../helpers/generateTokens.js");
 
 const login = async (req, res) => {
     const { email, password } = req.body;
