@@ -6,7 +6,7 @@ const { login } = require('../controllers/login.js');
 const { refreshTokens } = require('../controllers/refreshToken.js');
 
 
-const res = require('express/lib/response');
+// const res = require('express/lib/response');
 
 users.get ('/', (req, res) => res.send('GET ALL USERS TEST'));
 

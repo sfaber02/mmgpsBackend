@@ -21,10 +21,6 @@ const login = async (req, res) => {
                         email: user.email,
                     });
                     
-                    // res.header('Access-Control-Allow-Credentials', true);
-                    // res.header('access-control-expose-headers', 'Set-Cookie');
-                    // res.header(Access-Control-Allow-Credentials, true);
-
                     res.cookie("refresh_token", tokens.refreshToken, {
                         httpOnly: true,
                         sameSite: "none",

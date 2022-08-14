@@ -9,8 +9,6 @@ const {
 const { generateTokens } = require("../helpers/generateTokens.js");
 
 const register = async (req, res) => {
-    console.log("REGISTER ENDPOINT");
-
     const { name, email, password } = req.body;
 
     try {
@@ -40,17 +38,16 @@ const register = async (req, res) => {
                     const newUser = await addUser(name, email, hash);
 
                     if (newUser) {
-                      //if DB post successful generate JWTs
+                        //if DB post successful generate JWTs
                         const tokens = generateTokens(newUser);
 
                         res.cookie("refresh_token", tokens.refreshToken, {
-                          httpOnly: true,
-                          sameSite: "none",
-                          secure: true,
+                            httpOnly: true,
+                            sameSite: "none",
+                            secure: true,
                         });
 
                         res.status(200).json(tokens);
-
                     } else {
                         res.status(500).json({
                             error: "Failed to Post User to DB",
@@ -64,7 +61,7 @@ const register = async (req, res) => {
             }
         });
     } catch (error) {
-        res.status(500).json({error: error});
+        res.status(500).json({ error: error });
     }
 };
 

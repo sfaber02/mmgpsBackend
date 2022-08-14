@@ -21,6 +21,19 @@ const refreshTokens = (req, res) => {
             return res.status(403).json({error})
         }
 
+        const tokens = generateTokens({
+            user_id: user.user_id,
+            username: user.username,
+            email: user.email,
+        });
+
+        res.cookie("refresh_token", tokens.refreshToken, {
+            httpOnly: true,
+            sameSite: "none",
+            secure: true,
+        });
+        res.status(200).json(tokens); 
+
 
     });
 };
