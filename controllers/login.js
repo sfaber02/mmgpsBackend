@@ -1,6 +1,4 @@
 const bcrypt = require("bcrypt");
-const db = require("../db/dbConfig.js");
-const jwt = require("jsonwebtoken");
 const { getUser } = require("../queries/userQueries.js");
 const { generateTokens } = require("../helpers/generateTokens.js");
 
@@ -17,7 +15,16 @@ const login = async (req, res) => {
                 if (err) {
                     res.status(500).json({ error: "Password decrypt error." });
                 } else if (result) {
-                    const tokens = generateTokens(user);
+                    const tokens = generateTokens({
+                        user_id: user.user_id,
+                        username: user.username,
+                        email: user.email,
+                    });
+                    
+                    // res.header('Access-Control-Allow-Credentials', true);
+                    // res.header('access-control-expose-headers', 'Set-Cookie');
+                    // res.header(Access-Control-Allow-Credentials, true);
+
                     res.cookie("refresh_token", tokens.refreshToken, {
                         httpOnly: true,
                         sameSite: "none",

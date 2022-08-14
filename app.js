@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const cookieParser = require("cookie-parser");
 
 const usersController = require('./routes/users.js');
 
@@ -7,16 +8,19 @@ const app = express();
 
 app.use(cors({
     credentials: true,
-    origin: "http://localhost:5555" || "*"
+    origin: "http://localhost:3000" || "*"
 }));
 
 app.use(express.json());
+app.use(cookieParser());
+
 
 // app.use((req, res, next) => {
-//     console.log ('HELLO');
-//     res.header('Access-Control-Allow-Origin', ['*']);
-//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-//     res.header('Access-Control-Allow-Headers', 'Content-Type');
+   
+//     // res.header('Access-Control-Allow-Origin', ['*']);
+//     // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+//     // res.header('Access-Control-Allow-Headers', 'Content-Type');
+
 //     next();
 // });
 
